@@ -1,0 +1,186 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16.000000" height="16.000000" fill="none" mask="url(#mask_1)">
+	<defs>
+		<filter id="pixso_custom_mask_type_outline">
+			<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 " />
+		</filter>
+		<g id="pixso_custom_effect_7">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_7" width="7.153809" height="6.581055" x="-0.562500" y="7.563965" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_7)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_0" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.308068,7.9689,-11.9547,0.462154,6.04616,13.5549)">
+			<stop stop-color="rgb(26,189,77)" offset="0.141612202" stop-opacity="1" />
+			<stop stop-color="rgb(110,195,13)" offset="0.247515097" stop-opacity="1" />
+			<stop stop-color="rgb(138,197,2)" offset="0.311546803" stop-opacity="1" />
+			<stop stop-color="rgb(162,198,0)" offset="0.36601311" stop-opacity="1" />
+			<stop stop-color="rgb(200,201,3)" offset="0.445673496" stop-opacity="1" />
+			<stop stop-color="rgb(235,203,3)" offset="0.540305018" stop-opacity="1" />
+			<stop stop-color="rgb(247,205,7)" offset="0.615636289" stop-opacity="1" />
+			<stop stop-color="rgb(253,205,4)" offset="0.69934541" stop-opacity="1" />
+			<stop stop-color="rgb(253,206,5)" offset="0.771241784" stop-opacity="1" />
+			<stop stop-color="rgb(255,206,10)" offset="0.86056608" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_8">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_8" width="6.697266" height="5.433105" x="7.499023" y="-0.547852" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_8)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-7.13951,5.64645,0,13.5018,4.24556)">
+			<stop stop-color="rgb(251,78,90)" offset="0.408457786" stop-opacity="1" />
+			<stop stop-color="rgb(255,69,64)" offset="1" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_9">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_9" width="7.258301" height="5.940918" x="1.467773" y="-0.558105" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_9)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-7.72913,4.60336,-6.18052,-10.3772,10.4184,-1.12136)">
+			<stop stop-color="rgb(255,69,65)" offset="0.231272697" stop-opacity="1" />
+			<stop stop-color="rgb(255,69,64)" offset="0.311546803" stop-opacity="1" />
+			<stop stop-color="rgb(255,70,64)" offset="0.457516313" stop-opacity="1" />
+			<stop stop-color="rgb(255,71,63)" offset="0.540305018" stop-opacity="1" />
+			<stop stop-color="rgb(255,81,56)" offset="0.699346423" stop-opacity="1" />
+			<stop stop-color="rgb(255,91,51)" offset="0.771241784" stop-opacity="1" />
+			<stop stop-color="rgb(255,108,41)" offset="0.860566497" stop-opacity="1" />
+			<stop stop-color="rgb(255,140,24)" offset="1" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_10">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_10" width="9.619629" height="8.861816" x="6.981445" y="7.693359" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_10)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(6.78678,-5.34592,14.4071,18.2902,8.31337,15.0495)">
+			<stop stop-color="rgb(12,186,101)" offset="0.131546095" stop-opacity="1" />
+			<stop stop-color="rgb(11,184,109)" offset="0.209784299" stop-opacity="1" />
+			<stop stop-color="rgb(9,180,121)" offset="0.297296911" stop-opacity="1" />
+			<stop stop-color="rgb(8,173,147)" offset="0.39625749" stop-opacity="1" />
+			<stop stop-color="rgb(10,166,169)" offset="0.477124214" stop-opacity="1" />
+			<stop stop-color="rgb(13,156,198)" offset="0.568424523" stop-opacity="1" />
+			<stop stop-color="rgb(24,147,221)" offset="0.667384982" stop-opacity="1" />
+			<stop stop-color="rgb(37,139,241)" offset="0.768727303" stop-opacity="1" />
+			<stop stop-color="rgb(48,134,255)" offset="0.858506322" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_11">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_11" width="9.008789" height="4.250000" x="7.606445" y="5.909180" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_11)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<g id="pixso_custom_effect_12">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_12" width="6.097168" height="6.766602" x="-0.563965" y="2.059570" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_12)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-0.931904,8.57738,-12.1068,-1.31536,7.49498,1.42321)">
+			<stop stop-color="rgb(255,78,58)" offset="0.36601311" stop-opacity="1" />
+			<stop stop-color="rgb(255,138,27)" offset="0.457516313" stop-opacity="1" />
+			<stop stop-color="rgb(255,163,18)" offset="0.540305018" stop-opacity="1" />
+			<stop stop-color="rgb(255,182,12)" offset="0.615636289" stop-opacity="1" />
+			<stop stop-color="rgb(255,205,10)" offset="0.771241784" stop-opacity="1" />
+			<stop stop-color="rgb(254,207,10)" offset="0.860566497" stop-opacity="1" />
+			<stop stop-color="rgb(254,207,8)" offset="0.915032685" stop-opacity="1" />
+			<stop stop-color="rgb(253,205,1)" offset="1" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_13">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="3.3048501" />
+		</g>
+		<filter id="filter_13" width="11.427246" height="10.645020" x="-1.744629" y="-2.738281" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_13)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="1.10161674" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.85677,-3.24667,9.17945,8.07706,6.06686,1.33431)">
+			<stop stop-color="rgb(255,76,60)" offset="0.315904111" stop-opacity="1" />
+			<stop stop-color="rgb(255,105,44)" offset="0.60381788" stop-opacity="1" />
+			<stop stop-color="rgb(255,120,37)" offset="0.726836622" stop-opacity="1" />
+			<stop stop-color="rgb(255,141,27)" offset="0.884534001" stop-opacity="1" />
+			<stop stop-color="rgb(255,159,19)" offset="1" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_14">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_14" width="6.830078" height="4.973145" x="1.835938" y="11.594727" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_14)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<radialGradient id="paint_radial_6" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(7.72913,4.60336,-6.18052,10.3772,10.4186,17.0819)">
+			<stop stop-color="rgb(15,188,95)" offset="0.231272697" stop-opacity="1" />
+			<stop stop-color="rgb(15,188,95)" offset="0.311546803" stop-opacity="1" />
+			<stop stop-color="rgb(15,188,94)" offset="0.36601311" stop-opacity="1" />
+			<stop stop-color="rgb(15,188,93)" offset="0.457516313" stop-opacity="1" />
+			<stop stop-color="rgb(18,188,88)" offset="0.540305018" stop-opacity="1" />
+			<stop stop-color="rgb(40,191,60)" offset="0.699346423" stop-opacity="1" />
+			<stop stop-color="rgb(56,192,43)" offset="0.771241784" stop-opacity="1" />
+			<stop stop-color="rgb(82,194,24)" offset="0.860566497" stop-opacity="1" />
+			<stop stop-color="rgb(103,195,15)" offset="0.915032685" stop-opacity="1" />
+			<stop stop-color="rgb(134,197,4)" offset="1" stop-opacity="1" />
+		</radialGradient>
+		<g id="pixso_custom_effect_15">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="0.470079333" />
+		</g>
+		<filter id="filter_15" width="2.927734" height="4.452637" x="6.732422" y="12.114746" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_15)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="0.156693116" result="effect_layerBlur_1" />
+		</filter>
+		<linearGradient id="paint_linear_12" x1="7.20214844" x2="9.1893568" y1="14.3411865" y2="14.3411865" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(15,188,92)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(12,186,101)" offset="1" stop-opacity="1" />
+		</linearGradient>
+	</defs>
+	<mask id="mask_1" width="15.999999" height="15.999999" x="0.000000" y="0.000000" maskUnits="userSpaceOnUse">
+		<g filter="url(#pixso_custom_mask_type_outline)">
+			<g id="i">
+				<path id="Vector" d="M15.8464 6.51581L8.17042 6.51581L8.17042 9.59156L12.581 9.59156C12.5101 10.0268 12.3509 10.4551 12.1178 10.8455C11.8507 11.2929 11.5204 11.6335 11.182 11.8928C10.1681 12.6698 8.98599 12.8286 8.16506 12.8286C6.09127 12.8286 4.31936 11.4883 3.63341 9.66705C3.60573 9.60096 3.58735 9.53269 3.56496 9.46521C3.41338 9.00167 3.33056 8.51075 3.33056 8.00051C3.33056 7.46948 3.42025 6.96116 3.58377 6.48107C4.2288 4.58761 6.04066 3.17337 8.16655 3.17337C8.59415 3.17337 9.00592 3.22427 9.39641 3.32579C10.2888 3.5578 10.9201 4.01475 11.3069 4.37619L13.6408 2.0905C12.2211 0.788778 10.3704 1.96812e-09 8.16267 1.96812e-09C6.39777 -3.79862e-05 4.76833 0.549854 3.43307 1.47919C2.35021 2.23286 1.46211 3.24192 0.86275 4.41384C0.305261 5.50044 0 6.7046 0 7.99931C0 9.29407 0.305727 10.5107 0.863219 11.5873L0.863219 11.5946C1.45207 12.7375 2.31316 13.7215 3.35974 14.4717C4.27403 15.1271 5.91344 16 8.16267 16C9.45614 16 10.6025 15.7668 11.6135 15.3298C12.3428 15.0145 12.989 14.6033 13.5741 14.0748C14.3471 13.3765 14.9525 12.5127 15.3657 11.519C15.779 10.5252 16 9.40147 16 8.18311C16 7.61571 15.943 7.03947 15.8464 6.51575L15.8464 6.51581Z" fill="rgb(255,255,255)" fill-rule="nonzero" />
+			</g>
+		</g>
+	</mask>
+	<rect id="Social Icons" width="16.000000" height="16.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" />
+	<g id="Group">
+		<g filter="url(#filter_7)">
+			<path id="Vector" d="M-0.0922852 8.03418C-0.0838008 9.30851 0.279315 10.6233 0.828951 11.6847L0.828951 11.692C1.22609 12.4628 1.76886 13.0717 2.38707 13.675L6.1209 12.3126C5.41448 11.9537 5.30669 11.7338 4.8003 11.3326C4.28282 10.8108 3.89714 10.2118 3.65695 9.50937L3.64727 9.50937L3.65695 9.50207C3.49893 9.03823 3.48335 8.54587 3.47752 8.03418L-0.0922852 8.03418Z" fill="url(#paint_radial_0)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_8)">
+			<path id="Vector" d="M8.19567 -0.0776367C7.82662 1.21889 7.96772 2.47916 8.19567 3.21244C8.62183 3.21276 9.03238 3.26356 9.42165 3.36476C10.3141 3.59677 10.9453 4.05373 11.3321 4.41517L13.7258 2.07109C12.3077 0.770917 10.6012 -0.0755882 8.19567 -0.0776367Z" fill="url(#paint_radial_1)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_9)">
+			<path id="Vector" d="M8.18783 -0.0878906C6.37762 -0.0879298 4.70636 0.47608 3.33682 1.42928C2.8283 1.7832 2.36165 2.19204 1.94613 2.64667C1.83727 3.66792 2.76101 4.92313 4.59029 4.91274C5.47785 3.88031 6.79052 3.21232 8.25154 3.21232C8.25287 3.21232 8.25417 3.21243 8.2555 3.21244L8.19583 -0.087657C8.19314 -0.0876587 8.19053 -0.0878906 8.18783 -0.0878906Z" fill="url(#paint_radial_2)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_10)">
+			<path id="Vector" d="M14.1625 8.40361L12.5467 9.5136C12.4758 9.9489 12.3165 10.3771 12.0834 10.7676C11.8162 11.2149 11.486 11.5555 11.1476 11.8149C10.1358 12.5902 8.95682 12.7498 8.1361 12.7505C7.2878 14.1953 7.13908 14.919 8.19576 16.0851C9.50329 16.0841 10.6625 15.8481 11.685 15.4061C12.4241 15.0866 13.0789 14.6698 13.6718 14.1343C14.4552 13.4266 15.0688 12.5512 15.4876 11.5441C15.9064 10.5371 16.1303 9.39827 16.1303 8.16357L14.1625 8.40361Z" fill="url(#paint_radial_3)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_11)">
+			<path id="Vector" d="M8.07666 6.37939L8.07666 9.68886L15.8504 9.68886C15.9187 9.23562 16.1448 8.64911 16.1448 8.16357C16.1448 7.59617 16.0879 6.90311 15.9912 6.37939L8.07666 6.37939Z" fill="rgb(48,134,255)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_12)">
+			<path id="Vector" d="M1.98347 2.52979C1.50375 3.05466 1.09392 3.64215 0.768977 4.2775C0.211497 5.36411 -0.09375 6.68512 -0.09375 7.97982C-0.09375 7.99807 -0.09224 8.01592 -0.0921182 8.03413C0.154773 8.50751 3.31823 8.41686 3.47768 8.03413C3.47748 8.01627 3.47547 7.99886 3.47547 7.98096C3.47547 7.44993 3.56519 7.05853 3.72871 6.57844C3.93044 5.98626 4.24631 5.44094 4.65021 4.9711C4.74177 4.85421 4.986 4.60291 5.05725 4.45218C5.08439 4.39476 5.00797 4.36253 5.0037 4.34233C4.99892 4.31972 4.89646 4.3379 4.87351 4.32106C4.80063 4.2676 4.6563 4.23969 4.56867 4.21488C4.38135 4.16184 4.07092 4.04487 3.89849 3.92363C3.35346 3.54037 2.50289 3.08258 1.98347 2.52979Z" fill="url(#paint_radial_4)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_13)">
+			<path id="Vector" d="M3.90985 4.34457C5.17372 5.11016 5.53719 3.95813 6.37749 3.59764L4.91576 0.566406C4.37806 0.792402 3.87004 1.07318 3.39867 1.40125C2.69472 1.89119 2.07309 2.48906 1.55957 3.16945L3.90985 4.34457Z" fill="url(#paint_radial_5)" fill-rule="nonzero" />
+		</g>
+		<g filter="url(#filter_14)">
+			<path id="Vector" d="M4.42451 12.0781C2.72793 12.6906 2.46232 12.7126 2.30615 13.764C2.60459 14.0552 2.92523 14.3246 3.26597 14.5688C4.18026 15.2242 5.93897 16.0971 8.18819 16.0971C8.19083 16.0971 8.19336 16.0969 8.196 16.0969L8.196 12.6919C8.1943 12.6919 8.19234 12.692 8.19064 12.692C7.34838 12.692 6.67534 12.4708 5.98525 12.0861C5.81511 11.9912 5.50642 12.2459 5.3495 12.1321C5.13308 11.975 4.61223 12.2674 4.42451 12.0781Z" fill="url(#paint_radial_6)" fill-rule="nonzero" />
+		</g>
+		<g opacity="0.5" filter="url(#filter_15)">
+			<path id="Vector" d="M7.20215 12.585L7.20215 16.0382C7.51685 16.075 7.84437 16.0974 8.18794 16.0974C8.53237 16.0974 8.86557 16.0797 9.18936 16.0472L9.18936 12.6082C8.82651 12.6703 8.48477 12.6923 8.19039 12.6923C7.85135 12.6923 7.52163 12.6529 7.20215 12.585Z" fill="url(#paint_linear_12)" fill-rule="nonzero" />
+		</g>
+	</g>
+</svg>

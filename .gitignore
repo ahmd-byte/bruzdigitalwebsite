@@ -1,0 +1,27 @@
+﻿# Local reference mirror of zainabkabira.com (not part of this project)
+zainabkabira-site/
+
+# Editor/agent backups
+*.bak
+.backups/
+
+# OS / tooling noise
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+node_modules/
+*.log
+
+# Build output (Netlify runs tools/build_production.py and publishes dist/)
+dist/
+
+# Local deploy + env state
+.netlify/
+.env
+.env.*
+!.env.example
+
+# Python virtualenvs
+.venv/
+venv/

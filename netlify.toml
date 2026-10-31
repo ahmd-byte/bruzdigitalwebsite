@@ -1,0 +1,43 @@
+[build]
+  command = "python tools/build_production.py"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'sha256-Ofh/i/DrMK34q1xqSk9u3Z8KKlXYshRWl3t252oqe14='; style-src 'self'; upgrade-insecure-requests"
+    Permissions-Policy = "camera=(), geolocation=(), microphone=(), payment=(), usb=()"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/services/brand-identity.html"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/web-design.html"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/motion.html"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/strategy.html"
+  to = "/services.html"
+  status = 301
