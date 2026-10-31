@@ -583,3 +583,16 @@ body.has-scrolled .site-header { background:rgba(243,247,251,.86);box-shadow:0 1
 @keyframes bruz-spark { 0%,100%{transform:rotate(0)}50%{transform:rotate(24deg)} }
 @media(max-width:680px){.scroll-progress{left:1.1rem;right:1.1rem}.case-visual{gap:1rem}.tower-screen-top span:last-child{display:none}.tower-screen-body{padding:1rem}.tower-screen-graphic{margin-inline:1rem}.case-steps button{padding:.6rem .45rem;font-size:.76rem}.case-steps i{width:8px}}
 @media(prefers-reduced-motion:reduce){.motion-reveal{opacity:1;transform:none;transition:none}.hero.is-ready *,.visual-spark{animation:none!important}.button:hover,.recognition:hover,.offer-card:hover,.product-card:hover,.team-card:hover,.case-steps button:hover{transform:none}.tower-screen-graphic i{transition:none}}
+
+/* Keep the hero close to its floating header and let selected work breathe. */
+.hero { padding-top:clamp(1.75rem,2.8vw,3rem); }
+.hero-copy { justify-content:flex-start; }
+.hero-visual { align-self:start;margin-top:clamp(.75rem,3.5vw,3.25rem); }
+#studio,#work,#products,#team,#contact { scroll-margin-top:7rem; }
+#work { padding-top:clamp(3rem,5vw,5rem); }
+#work .section-heading { max-width:78rem;margin-bottom:clamp(1.75rem,3vw,2.5rem); }
+#work .section-heading h2 { max-width:none;font-size:clamp(2.8rem,5vw,5.6rem); }
+#work .section-heading > p:last-child { max-width:58rem; }
+#work .work-feature { grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,3vw,3.5rem); }
+@media(max-width:900px){.hero-visual{margin-top:0}#work .work-feature{grid-template-columns:1fr}}
+@media(max-width:680px){.hero{padding-top:2rem}#work .section-heading h2{font-size:clamp(2.5rem,11vw,3.7rem)}#studio,#work,#products,#team,#contact{scroll-margin-top:5.5rem}}
