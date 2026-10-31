@@ -33,6 +33,7 @@ def header(active="home"):
     )
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
+  <span class="scroll-progress" aria-hidden="true"></span>
   <a class="brand" href="index.html" aria-label="Bruz Digital home"><span class="brand-mark">BRUZ<span class="brand-dot">.</span></span><span class="brand-descriptor">DIGITAL<br>STUDIO + PRODUCTS</span></a>
   <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button>
   <nav class="site-nav" id="site-nav" aria-label="Primary navigation">{nav}</nav>
@@ -85,16 +86,17 @@ def page(title, description, active, content, pathname, lang="en"):
 '''
 
 
-hero_visual = '''<div class="hero-visual" role="img" aria-label="Illustrative diagram showing a business challenge moving through Bruz Studio into a practical product">
+hero_visual = '''<div class="hero-visual" aria-label="Illustrative diagram showing a business challenge moving through Bruz Studio into a practical product">
+  <div class="visual-orbit visual-orbit--one" aria-hidden="true"></div><div class="visual-orbit visual-orbit--two" aria-hidden="true"></div>
   <div class="visual-head"><span>BRUZ / BUILD SYSTEM</span><span>STUDIO + PRODUCTS</span></div>
   <div class="visual-flow"><div class="flow-node"><span>01</span><strong>Challenge</strong></div><i aria-hidden="true"></i><div class="flow-node flow-node--brand"><span>02</span><strong>BRUZ</strong></div><i aria-hidden="true"></i><div class="flow-node"><span>03</span><strong>Useful build</strong></div></div>
   <div class="visual-foot"><span>Designed around real work</span><span class="visual-spark" aria-hidden="true">✳</span></div>
 </div>'''
 
-case_visual = '''<div class="case-visual" role="img" aria-label="Illustrative Quality Control Tower concept, not a deployed customer system">
+case_visual = '''<div class="case-visual" data-tower-demo aria-label="Illustrative Quality Control Tower prototype walkthrough">
   <div class="case-visual-head"><span>BRUZ / QUALITY CONTROL TOWER</span><span>CONCEPT</span></div>
-  <div class="case-visual-title">One shared view<br>from field signal to action.</div>
-  <div class="case-steps"><span><b>01</b> Capture</span><i></i><span><b>02</b> Review</span><i></i><span><b>03</b> Act</span></div>
+  <div class="tower-screen" aria-live="polite"><div class="tower-screen-top"><span class="tower-pulse" aria-hidden="true"></span><span data-tower-phase>01 / Capture</span><span>ILLUSTRATIVE FLOW</span></div><div class="tower-screen-body"><span class="tower-screen-icon" aria-hidden="true">↗</span><strong data-tower-title>Field signal comes in.</strong><p data-tower-description>Bring relevant field information into a consistent starting point.</p></div><div class="tower-screen-graphic" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="case-steps" aria-label="Explore the prototype flow"><button type="button" aria-pressed="true" data-tower-step="0"><b>01</b> Capture</button><i aria-hidden="true"></i><button type="button" aria-pressed="false" data-tower-step="1"><b>02</b> Review</button><i aria-hidden="true"></i><button type="button" aria-pressed="false" data-tower-step="2"><b>03</b> Act</button></div>
   <p>Illustrative interface · Hackathon prototype</p>
 </div>'''
 
