@@ -54,6 +54,7 @@ def page(title, description, active, content, pathname, lang="en"):
     canonical = f"{SITE_URL}{pathname}"
     safe_title = html.escape(title)
     safe_description = html.escape(description, quote=True)
+    document_title = "Bruz Digital" if title == "Bruz Digital" else f"{safe_title} | Bruz Digital"
     return f'''<!doctype html>
 <html lang="{lang}"><head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,7 +62,7 @@ def page(title, description, active, content, pathname, lang="en"):
   <meta name="color-scheme" content="light"><meta property="og:type" content="website"><meta property="og:site_name" content="Bruz Digital">
   <meta property="og:title" content="{safe_title} | Bruz Digital"><meta property="og:description" content="{safe_description}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{SOCIAL_IMAGE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Bruz Digital — We build tech. You build business.">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{safe_title} | Bruz Digital"><meta name="twitter:description" content="{safe_description}"><meta name="twitter:image" content="{SOCIAL_IMAGE}">
-  <title>{safe_title} | Bruz Digital</title>
+  <title>{document_title}</title>
   <link rel="canonical" href="{canonical}"><link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/plus-jakarta-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="revamp.css"><script defer src="revamp.js"></script>
@@ -124,7 +125,7 @@ thanks = '''<section class="page-hero page-hero--compact"><p class="eyebrow">Ema
 not_found = '''<section class="page-hero page-hero--compact"><p class="eyebrow">404 / Page not found</p><h1>This path<br>doesn't exist.</h1><p>The page may have moved. Return home or explore the work.</p><div class="hero-actions"><a class="button button--primary" href="index.html">Go to Bruz Digital <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="projects.html">View our work <span aria-hidden="true">↗</span></a></div></section>'''
 
 pages = {
-    "index.html": page("We build tech. You build business.", "Bruz Digital builds software, applied AI and digital products around the work businesses need to get done.", "home", home, "/"),
+    "index.html": page("Bruz Digital", "Bruz Digital builds software, applied AI and digital products around the work businesses need to get done.", "home", home, "/"),
     "projects.html": page("Work", "Explore Bruz Digital's AI Quality Control Tower hackathon prototype and the challenge behind it.", "work", projects, "/projects.html"),
     "services.html": page("Studio", "Bruz Studio builds custom software, applied AI, web experiences and product systems.", "studio", services, "/services.html"),
     "products.html": page("Products", "See Bruz Digital product directions and their current development status.", "products", products, "/products.html"),
