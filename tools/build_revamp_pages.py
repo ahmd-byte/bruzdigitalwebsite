@@ -73,7 +73,7 @@ def page(title, description, active, content, pathname, lang="en"):
   <meta property="og:title" content="{safe_title} | Bruz Digital"><meta property="og:description" content="{safe_description}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{SOCIAL_IMAGE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Bruz Digital — We build tech. You build business.">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{safe_title} | Bruz Digital"><meta name="twitter:description" content="{safe_description}"><meta name="twitter:image" content="{SOCIAL_IMAGE}">
   <title>{document_title}</title>
-  <link rel="canonical" href="{canonical}"><link rel="icon" href="assets/brand/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="canonical" href="{canonical}"><link rel="icon" href="assets/brand/favicon.svg?v=4" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/plus-jakarta-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="revamp.css"><script defer src="revamp.js"></script>
   <script type="application/ld+json">{ORGANIZATION_SCHEMA}</script>
