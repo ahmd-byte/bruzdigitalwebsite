@@ -514,6 +514,8 @@ body{overflow-x:clip}
 @media(max-width:520px){.site-footer{padding-top:2.5rem}.footer-main{grid-template-columns:1fr;gap:1.8rem;padding-bottom:1.8rem}.footer-brand,.footer-directory,.footer-contact{grid-column:1;grid-row:auto}.footer-tagline{margin-top:.8rem}.footer-base{grid-template-columns:1fr auto;gap:.65rem}.footer-location{grid-column:1}.footer-base>a{grid-column:2;grid-row:1 / span 2}}
 
 /* Bruz in motion: one entrance, scroll pacing, and a guided prototype flow. */
+.page-hero { background: var(--signal); }
+.page-hero > p:not(.eyebrow) { color: #E0E9F5; }
 .site-header { isolation: isolate; }
 .scroll-progress { position:absolute;left:2.2rem;right:2.2rem;bottom:0;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--turquoise),var(--accent));transform:scaleX(var(--scroll-progress,0));transform-origin:left;pointer-events:none; }
 body.has-scrolled .site-header { background:rgba(243,247,251,.86);box-shadow:0 14px 36px rgba(16,36,58,.16),inset 0 1px 0 rgba(255,255,255,.9); }

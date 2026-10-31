@@ -19,6 +19,7 @@ DIST.mkdir()
 for filename in (
     "index.html",
     "projects.html",
+    "products.html",
     "services.html",
     "team.html",
     "contact.html",
