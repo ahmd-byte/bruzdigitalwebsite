@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="2480" viewBox="0 0 1920 2480">
+<defs>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#163B8C"/><stop offset="1" stop-color="#10243A"/></linearGradient>
+ <linearGradient id="aqua" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#16B8C4" stop-opacity=".9"/><stop offset="1" stop-color="#16B8C4" stop-opacity=".12"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#10243A" flood-opacity=".16"/></filter>
+ <style><![CDATA[text{font-family:'Plus Jakarta Sans','DejaVu Sans',Arial,sans-serif;fill:#10243A}text[fill='#FFFFFF']{fill:#FFFFFF}.ey{font-size:16px;font-weight:700;letter-spacing:2px}.small{font-size:15px}.body{font-size:19px}.title{font-size:56px;font-weight:700;letter-spacing:-2px}.cardtitle{font-size:24px;font-weight:700}.label{font-size:13px;font-weight:700;letter-spacing:1.4px}.nav{font-size:15px;font-weight:600}]]></style>
+</defs>
+<rect width="1920" height="2480" fill="#F3F7FB"/>
+<!-- board masthead -->
+<text x="96" y="93" class="ey" fill="#163B8C">BRUZ DIGITAL · WEBSITE REDESIGN</text>
+<text x="96" y="177" font-size="64" font-weight="700" letter-spacing="-2">A clearer Bruz at a glance.</text>
+<text x="98" y="225" class="body" fill="#475569">Namecard-first direction · approved Signal Blue identity · referral to conversation</text>
+<rect x="1500" y="78" width="322" height="58" rx="29" fill="#E3EEF9"/><circle cx="1532" cy="107" r="8" fill="#16B8C4"/><text x="1554" y="113" class="small" font-weight="700">DIRECTION A · RECOMMENDED</text>
+<!-- desktop frame -->
+<rect x="96" y="286" width="1728" height="1220" rx="26" fill="#FFFFFF" filter="url(#shadow)"/>
+<rect x="96" y="286" width="1728" height="56" rx="26" fill="#EAF0F6"/><circle cx="130" cy="314" r="7" fill="#F49A38"/><circle cx="153" cy="314" r="7" fill="#16B8C4"/><circle cx="176" cy="314" r="7" fill="#163B8C"/><rect x="714" y="301" width="492" height="26" rx="13" fill="#FFFFFF"/><text x="960" y="319" text-anchor="middle" font-size="12" fill="#64748B">bruzdigital.com</text>
+<!-- header -->
+<text x="154" y="401" font-size="28" font-weight="800" letter-spacing="2">BRUZ<tspan fill="#16B8C4">.</tspan></text>
+<text x="922" y="399" class="nav">Studio</text><text x="1011" y="399" class="nav">Work</text><text x="1090" y="399" class="nav">Products</text><text x="1198" y="399" class="nav">Team</text>
+<rect x="1322" y="367" width="214" height="56" rx="28" fill="#163B8C"/><text x="1429" y="402" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Email Bruz ↗</text>
+<line x1="154" y1="447" x2="1766" y2="447" stroke="#E2E8F0"/>
+<!-- hero text -->
+<text x="158" y="531" class="ey" fill="#163B8C">AI &amp; SOFTWARE STUDIO</text>
+<text x="158" y="626" class="title">We build tech.</text><text x="158" y="697" class="title" fill="#163B8C">You build business.</text>
+<text x="160" y="758" class="body" fill="#475569">Practical software, AI and web experiences</text><text x="160" y="786" class="body" fill="#475569">built around the work your business needs.</text>
+<rect x="158" y="831" width="198" height="60" rx="30" fill="#163B8C"/><text x="257" y="868" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Email Bruz ↗</text>
+<rect x="372" y="831" width="204" height="60" rx="30" fill="#FFFFFF" stroke="#163B8C" stroke-width="2"/><text x="474" y="868" text-anchor="middle" font-size="16" font-weight="700" fill="#163B8C">Explore our work ↓</text>
+<text x="160" y="946" class="small" fill="#64748B">hello@bruzdigital.com</text>
+<!-- visual on right -->
+<rect x="855" y="489" width="838" height="448" rx="22" fill="url(#blue)"/>
+<circle cx="1480" cy="650" r="174" fill="url(#aqua)" opacity=".8"/>
+<path d="M984 760 C1070 636 1123 830 1210 666 S1363 758 1434 560 S1574 719 1658 526" fill="none" stroke="#16B8C4" stroke-width="3" opacity=".7"/>
+<g fill="#F3F7FB" stroke="#16B8C4" stroke-width="3"><circle cx="984" cy="760" r="10"/><circle cx="1123" cy="747" r="10"/><circle cx="1210" cy="666" r="10"/><circle cx="1363" cy="699" r="10"/><circle cx="1434" cy="560" r="10"/><circle cx="1574" cy="656" r="10"/><circle cx="1658" cy="526" r="10"/></g>
+<rect x="930" y="527" width="274" height="104" rx="14" fill="#FFFFFF"/><text x="954" y="560" class="label" fill="#163B8C">BRUZ STUDIO</text><text x="954" y="592" font-size="20" font-weight="700">Built for your workflow</text>
+<rect x="1395" y="764" width="238" height="112" rx="14" fill="#FFFFFF"/><text x="1418" y="797" class="label" fill="#163B8C">BRUZ PRODUCTS</text><text x="1418" y="831" font-size="20" font-weight="700">Practical tools</text><text x="1418" y="854" font-size="13" fill="#64748B">Illustrative system diagram</text>
+<!-- recognition strip -->
+<rect x="154" y="1002" width="1612" height="92" rx="14" fill="#E8F4F7"/><rect x="154" y="1002" width="7" height="92" rx="3" fill="#16B8C4"/><text x="190" y="1040" class="label" fill="#163B8C">VERIFIED RECOGNITION</text><text x="190" y="1071" font-size="21" font-weight="700">2nd runner-up · Johor Plantations Hackathon 2026</text><text x="1677" y="1056" text-anchor="end" class="small" font-weight="700" fill="#163B8C">View the build ↗</text>
+<!-- pathways -->
+<text x="158" y="1160" class="ey" fill="#163B8C">WHAT WE DO</text><text x="158" y="1205" font-size="34" font-weight="700">One team. Two ways to build.</text>
+<rect x="154" y="1232" width="780" height="188" rx="18" fill="#F3F7FB" stroke="#D6E1EC"/><text x="186" y="1282" class="label" fill="#163B8C">BRUZ STUDIO</text><text x="186" y="1324" class="cardtitle">Built around your problem.</text><text x="186" y="1361" class="small" fill="#475569">Custom software, applied AI and web experiences.</text><text x="186" y="1395" class="small" font-weight="700" fill="#163B8C">Explore Studio ↗</text>
+<rect x="956" y="1232" width="810" height="188" rx="18" fill="#EAF3FD" stroke="#C7DAF2"/><text x="988" y="1282" class="label" fill="#163B8C">BRUZ PRODUCTS</text><text x="988" y="1324" class="cardtitle">Focused tools. Real workflows.</text><text x="988" y="1361" class="small" fill="#475569">Practical tools for business data and documents.</text><text x="988" y="1395" class="small" font-weight="700" fill="#163B8C">Explore products ↓</text>
+<!-- small callouts -->
+<text x="96" y="1574" class="ey" fill="#163B8C">THE REST OF THE HOMEPAGE</text>
+<g filter="url(#shadow)"><rect x="96" y="1607" width="534" height="264" rx="20" fill="#FFFFFF"/><rect x="652" y="1607" width="534" height="264" rx="20" fill="#FFFFFF"/><rect x="1208" y="1607" width="616" height="264" rx="20" fill="#FFFFFF"/></g>
+<text x="130" y="1661" class="label" fill="#163B8C">01 · SELECTED WORK</text><text x="130" y="1706" class="cardtitle">AI Quality Control Tower</text><text x="130" y="1741" class="small" fill="#475569">Hackathon prototype · interface shown is illustrative.</text><text x="130" y="1807" class="small" font-weight="700" fill="#163B8C">Open case study ↗</text>
+<text x="686" y="1661" class="label" fill="#163B8C">02 · PRODUCT STATUS</text><text x="686" y="1706" class="cardtitle">Clear status, no hype.</text><text x="686" y="1743" class="small" fill="#475569">Bruz OCR · foundation built</text><text x="686" y="1771" class="small" fill="#475569">Bruz Intelligent · in development</text><text x="686" y="1807" class="small" font-weight="700" fill="#163B8C">See all products ↓</text>
+<text x="1242" y="1661" class="label" fill="#163B8C">03 · THE TEAM</text><text x="1242" y="1706" class="cardtitle">Five people. One studio.</text><text x="1242" y="1743" class="small" fill="#475569">Show verified names and roles; use portraits</text><text x="1242" y="1771" class="small" fill="#475569">only where approved images exist.</text><text x="1242" y="1807" class="small" font-weight="700" fill="#163B8C">Meet the team ↗</text>
+<rect x="96" y="1900" width="1728" height="72" rx="14" fill="#163B8C"/><text x="132" y="1945" font-size="21" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Have a project in mind?</text><text x="1777" y="1945" text-anchor="end" font-size="16" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Email hello@bruzdigital.com ↗</text>
+<text x="100" y="2014" class="small" fill="#64748B">Footer: Work · Studio · Products · Team · Contact · Privacy</text>
+<!-- mobile frames below -->
+<text x="96" y="2110" class="ey" fill="#163B8C">MOBILE FIRST SCREEN + MENU STATE</text>
+<rect x="96" y="2140" width="408" height="300" rx="26" fill="#FFFFFF" stroke="#D6E1EC" stroke-width="2"/>
+<text x="126" y="2185" font-size="22" font-weight="800" letter-spacing="1">BRUZ<tspan fill="#16B8C4">.</tspan></text><circle cx="454" cy="2173" r="18" fill="#EAF0F6"/><path d="M445 2168h18M445 2174h18M445 2180h18" stroke="#163B8C" stroke-width="2"/>
+<text x="126" y="2240" class="label" fill="#163B8C">AI &amp; SOFTWARE STUDIO</text>
+<text x="126" y="2291" font-size="34" font-weight="700" letter-spacing="-1">We build tech.</text><text x="126" y="2333" font-size="34" font-weight="700" fill="#163B8C" letter-spacing="-1">You build business.</text>
+<text x="126" y="2370" font-size="14" fill="#475569">Practical software, AI and web experiences.</text>
+<rect x="126" y="2391" width="168" height="40" rx="20" fill="#163B8C"/><text x="210" y="2417" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Email Bruz ↗</text>
+<!-- mobile menu card -->
+<rect x="550" y="2140" width="408" height="300" rx="26" fill="#10243A"/>
+<text x="580" y="2185" font-size="22" font-weight="800" letter-spacing="1" fill="#FFFFFF" style="fill:#FFFFFF">BRUZ<tspan fill="#16B8C4">.</tspan></text><circle cx="908" cy="2173" r="18" fill="#FFFFFF" opacity=".1"/><path d="M902 2167l12 12M914 2167l-12 12" stroke="#FFFFFF" stroke-width="2"/>
+<text x="580" y="2244" font-size="19" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Studio</text><text x="580" y="2284" font-size="19" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Work</text><text x="580" y="2324" font-size="19" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Products</text><text x="580" y="2364" font-size="19" font-weight="700" fill="#FFFFFF" style="fill:#FFFFFF">Team</text>
+<rect x="770" y="2340" width="156" height="48" rx="24" fill="#16B8C4"/><text x="848" y="2370" text-anchor="middle" font-size="13" font-weight="700" fill="#10243A">Email Bruz ↗</text>
+<!-- guidance note -->
+<text x="1000" y="2177" class="label" fill="#163B8C">PROPOSAL NOTES</text>
+<text x="1000" y="2220" class="small" font-weight="700">• Confirm the central WhatsApp number</text><text x="1000" y="2248" class="small" fill="#475569">before making it the primary contact button.</text>
+<text x="1000" y="2295" class="small" font-weight="700">• Keep email as the verified fallback.</text>
+<text x="1000" y="2342" class="small" font-weight="700">• Check mobile layout and contact routing</text><text x="1000" y="2370" class="small" fill="#475569">on the real deployment before launch.</text>
+<text x="1000" y="2417" font-size="13" fill="#64748B">Reduced motion: static hero; no scroll choreography.</text>
+</svg>

@@ -1,0 +1,7 @@
+{
+  "schema": "design-arc.active-review/v1",
+  "runtime": "codex",
+  "review_id": "20261031-bruz-namecard",
+  "workflow_version": "0.3.0",
+  "project_id": "https://github.com/ahmd-byte/bruzdigitalwebsite"
+}
