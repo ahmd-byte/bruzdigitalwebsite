@@ -42,11 +42,21 @@ def header(active="home"):
 def footer():
     return '''<footer class="site-footer">
   <div class="footer-main">
-    <a class="brand brand--footer" href="index.html" aria-label="Bruz Digital home"><span class="brand-mark">BRUZ<span class="brand-dot">.</span></span></a>
-    <p>We build tech.<br><strong>You build business.</strong></p>
-    <a class="footer-email" href="mailto:hello@bruzdigital.com?subject=Let%27s%20build%20with%20Bruz">hello@bruzdigital.com <span aria-hidden="true">↗</span></a>
+    <div class="footer-brand">
+      <a class="brand brand--footer" href="index.html" aria-label="Bruz Digital home"><span class="brand-mark">BRUZ<span class="brand-dot">.</span></span></a>
+      <p class="footer-tagline">We build tech.<strong>You build business.</strong></p>
+    </div>
+    <div class="footer-directory">
+      <p class="footer-label">Explore Bruz</p>
+      <nav aria-label="Footer navigation"><a href="index.html#studio">Studio</a><a href="index.html#work">Work</a><a href="index.html#products">Products</a><a href="index.html#team">Team</a></nav>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-label">Start a conversation</p>
+      <a class="footer-email" href="mailto:hello@bruzdigital.com?subject=Let%27s%20build%20with%20Bruz">hello@bruzdigital.com <span aria-hidden="true">↗</span></a>
+      <a class="footer-privacy" href="privacy.html">How we handle privacy</a>
+    </div>
   </div>
-  <div class="footer-base"><nav aria-label="Footer navigation"><a href="index.html#studio">Studio</a><a href="index.html#work">Work</a><a href="index.html#products">Products</a><a href="index.html#team">Team</a><a href="privacy.html">Privacy</a></nav><p>© 2026 Bruz Digital</p><a href="#main">Back to top ↑</a></div>
+  <div class="footer-base"><p>© 2026 Bruz Digital</p><span class="footer-location">Software · Applied AI · Digital products</span><a href="#main">Back to top ↑</a></div>
 </footer>'''
 
 
@@ -89,7 +99,7 @@ case_visual = '''<div class="case-visual" role="img" aria-label="Illustrative Qu
 </div>'''
 
 team_preview = '''<div class="team-preview">
-  <article class="person person--feature"><img src="assets/team/sarvind-raj.jpg" alt="Portrait of Sarvind Raj" width="960" height="1280" loading="lazy" decoding="async"><div><h3>Sarvind Raj</h3><p>Co-founder · AI Engineer</p></div></article>
+  <article class="person person--feature"><img src="assets/team/sarvind-raj.jpg" alt="Portrait of Sarvind Raj" width="960" height="1280" loading="lazy" decoding="async"><div><h3>Sarvind Raj</h3><p>AI Engineer</p></div></article>
   <article class="person person--feature"><img src="assets/team/nabilah-abas.jpg" alt="Portrait of Nabilah Abas" width="853" height="1280" loading="lazy" decoding="async"><div><h3>Nabilah Abas</h3><p>AI Engineer</p></div></article>
 </div>'''
 
@@ -114,7 +124,7 @@ def person(name, role, initials, image=None, email=None):
     return f'<article class="team-card">{visual}<div class="team-card-info"><h2>{html.escape(name)}</h2><p>{html.escape(role)}</p>{contact}</div></article>'
 
 team_whatsapp = f'<a class="team-whatsapp" href="{html.escape(TEAM_WHATSAPP_URL, quote=True)}" target="_blank" rel="noopener noreferrer">WhatsApp the team <span aria-hidden="true">↗</span></a>' if TEAM_WHATSAPP_URL else ''
-team = f'''<section class="page-hero"><p class="eyebrow">People / Bruz Digital</p><h1>The people<br>behind the build.</h1><p>AI engineers and software builders making practical technology.</p></section><section class="section section--team"><div class="section-heading"><p class="eyebrow">The team</p><h2>Hands on, from idea to interface.</h2><p>A small team across AI, software and data engineering.</p></div><div class="team-grid">{person("Ahmad Syafi", "Founder · AI Engineer", "AS")}{person("Sarvind Raj", "Co-founder · AI Engineer", "SR", "assets/team/sarvind-raj.jpg", "sarvind@bruzdigital.com")}{person("Nabilah Abas", "AI Engineer", "NA", "assets/team/nabilah-abas.jpg", "nabilah@bruzdigital.com")}{person("Suvarnaa Mugunthan", "Software Engineer", "SM")}{person("Pravin Anand Kumar", "Data Engineer", "PA")}</div><div class="team-contact">{team_whatsapp}<a href="mailto:hello@bruzdigital.com?subject=Contact%20Bruz%20Digital">Email the Bruz team <span aria-hidden="true">↗</span></a></div></section>'''
+team = f'''<section class="page-hero"><p class="eyebrow">People / Bruz Digital</p><h1>The people<br>behind the build.</h1><p>AI engineers and software builders making practical technology.</p></section><section class="section section--team"><div class="section-heading"><p class="eyebrow">The team</p><h2>Hands on, from idea to interface.</h2><p>A small team across AI, software and data engineering.</p></div><div class="team-grid">{person("Ahmad Syafi", "Founder · AI Engineer", "AS")}{person("Sarvind Raj", "AI Engineer", "SR", "assets/team/sarvind-raj.jpg", "sarvind@bruzdigital.com")}{person("Nabilah Abas", "AI Engineer", "NA", "assets/team/nabilah-abas.jpg", "nabilah@bruzdigital.com")}{person("Suvarnaa Mugunthan", "Software Engineer", "SM")}{person("Pravin Anand Kumar", "Data Engineer", "PA")}</div><div class="team-contact">{team_whatsapp}<a href="mailto:hello@bruzdigital.com?subject=Contact%20Bruz%20Digital">Email the Bruz team <span aria-hidden="true">↗</span></a></div></section>'''
 
 contact = '''<section class="page-hero page-hero--contact"><p class="eyebrow">Contact / Bruz Digital</p><h1>Let's talk<br>about the build.</h1><p>Send us a short note about what needs to work better. We’ll reply by email.</p><a class="button button--primary" href="mailto:hello@bruzdigital.com?subject=Let%27s%20build%20with%20Bruz">Email hello@bruzdigital.com <span aria-hidden="true">↗</span></a></section><section class="section section--soft"><div class="section-heading"><p class="eyebrow">A useful first note</p><h2>Start with what<br>you know.</h2><p>You can include the challenge, the people involved, existing tools or a target timeline. A short outline is enough to begin.</p></div><a class="email-panel" href="mailto:hello@bruzdigital.com?subject=Let%27s%20build%20with%20Bruz"><span class="email-panel-label">Email</span><strong>hello@bruzdigital.com</strong><span class="email-panel-arrow" aria-hidden="true">↗</span></a></section>'''
 
