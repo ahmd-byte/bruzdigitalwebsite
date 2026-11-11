@@ -75,7 +75,7 @@ body { padding-top: 80px; }
 .orbit-lede { margin: 0; color: #cad1d1; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.5; }
 .orbit-aside .hero-actions { margin-top: 1.6rem; }
 
-.orbit-stage { --rx: min(33vw, 500px); --ry: min(calc(var(--rx) * .3), 15vh); --cy: 50%; position: absolute; z-index: 2; inset: 0; isolation: isolate; pointer-events: none; }
+.orbit-stage { --rx: min(33vw, 500px); --ry: min(calc(var(--rx) * .3), 15vh); --cy: 54%; position: absolute; z-index: 2; inset: 0; isolation: isolate; pointer-events: none; }
 .orbit-watermark, .orbit-ring, .orbit-core, .orbit-cards { position: absolute; left: 50%; top: var(--cy); }
 .orbit-watermark { z-index: 0; color: #182326; font-size: clamp(10rem, 30vw, 30rem); font-weight: 800; letter-spacing: -.09em; line-height: .8; transform: translate(-50%, -30%); user-select: none; white-space: nowrap; }
 .orbit-watermark span { position: absolute; top: .04em; margin-left: .06em; font: 500 .06em var(--mono); letter-spacing: 0; }
@@ -120,6 +120,7 @@ body { padding-top: 80px; }
 .orbit-progress i.is-active { width: 2.4rem; height: 2px; background: var(--accent); }
 .orbit-hero:not(.is-live) .orbit-progress { display: none; }
 
+.orbit-hero:not(.is-live) .orbit-foot span:last-child { display: none; }
 .orbit-foot { position: absolute; z-index: 3; right: var(--edge); bottom: 1.5rem; left: var(--edge); display: flex; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--line-soft); color: var(--muted-2); font: 500 .6rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 
 /* Tablet and phone: no orbit, the six items become a plain grid under the mark. */
