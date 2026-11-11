@@ -27,6 +27,32 @@
 
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
+
+  /* ---- Sticky header: hide on scroll down, show on scroll up ---- */
+  const header = document.querySelector('.site-header');
+  if (header) {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const threshold = 5;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentY = window.scrollY;
+          if (Math.abs(currentY - lastY) > threshold) {
+            if (currentY > lastY && currentY > 120) {
+              header.classList.add('header--hidden');
+            } else {
+              header.classList.remove('header--hidden');
+            }
+            lastY = currentY;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   if (toggle && nav) {
     const close = () => {
       toggle.setAttribute('aria-expanded', 'false');
