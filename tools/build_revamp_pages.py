@@ -106,57 +106,67 @@ ORBIT_ICONS = {
     "nodes": '<circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l2.8 6.8M16 8.2l-2.8 6.8M8.2 7h7.6"/>',
 }
 
+# (kind, card title, card subtitle, detail title, detail accent word, description, tags, icon, dark card)
 ORBIT_ITEMS = (
-    ("Bruz Studio", "Custom software", "Tools built for the job", "Internal systems, customer experiences and workflows built for a specific team and job.", ("Internal systems", "Customer experiences", "Workflows"), "code"),
-    ("Bruz Studio", "Applied AI", "Intelligence in context", "AI features designed around useful tasks, data quality and human review.", ("Useful tasks", "Data quality", "Human review"), "spark"),
-    ("Bruz Studio", "Web experiences", "Sites and interfaces", "Fast, accessible sites and interfaces that explain the offer and make the next step obvious.", ("Sites", "Interfaces", "Accessibility"), "window"),
-    ("Bruz Studio", "Product &amp; brand systems", "One visual language", "A clear visual language that carries from the first prototype through the finished product.", ("Prototypes", "Product UI", "Brand"), "layers"),
-    ("Bruz Products", "Quality Control Tower", "2nd runner-up · 2026", "Field capture, quality review and action in one view. Built for Johor Plantations Hackathon 2026.", ("Hackathon prototype", "2nd runner-up", "2026"), "tower"),
-    ("Bruz Products", "Bruz Intelligent", "In development", "Business information shaped into useful context.", ("AI + data", "In development"), "nodes"),
+    ("Bruz Studio", "Custom software", "Tools built for the job", "Custom", "software", "Internal systems, customer experiences and workflows built for a specific team and job.", ("Internal systems", "Customer experiences", "Workflows"), "code", False),
+    ("Bruz Studio", "Applied AI", "Intelligence in context", "Applied", "AI", "AI features designed around useful tasks, data quality and human review.", ("Useful tasks", "Data quality", "Human review"), "spark", True),
+    ("Bruz Studio", "Web experiences", "Sites and interfaces", "Web", "experiences", "Fast, accessible sites and interfaces that explain the offer and make the next step obvious.", ("Sites", "Interfaces", "Accessibility"), "window", False),
+    ("Bruz Studio", "Product &amp; brand systems", "One visual language", "Product &amp; brand", "systems", "A clear visual language that carries from the first prototype through the finished product.", ("Prototypes", "Product UI", "Brand"), "layers", False),
+    ("Bruz Products", "Quality Control Tower", "2nd runner-up · 2026", "Quality Control", "Tower", "Field capture, quality review and action in one view. Built for Johor Plantations Hackathon 2026.", ("Hackathon prototype", "2nd runner-up", "2026"), "tower", True),
+    ("Bruz Products", "Bruz Intelligent", "In development", "Bruz", "Intelligent", "Business information shaped into useful context.", ("AI + data", "In development"), "nodes", False),
 )
 
-BRUZ_MARK = '<svg viewBox="0 0 64 64" focusable="false"><path d="M14 15v34h18c10 0 17-5 17-14 0-5-3-9-8-11 3-2 5-5 5-9H35c0 4-3 6-8 6h-3v-6H14zm10 16h8c4 0 6 2 6 5s-2 5-6 5h-8V31z" fill="currentColor"/><circle cx="51" cy="13" r="4" class="orbit-core__dot"/></svg>'
+BRUZ_MARK = '<svg viewBox="0 0 64 64" focusable="false"><path d="M14 15v34h18c10 0 17-5 17-14 0-5-3-9-8-11 3-2 5-5 5-9H35c0 4-3 6-8 6h-3v-6H14zm10 16h8c4 0 6 2 6 5s-2 5-6 5h-8V31z" fill="currentColor"/><circle cx="51" cy="13" r="4" class="orbit-mark__dot"/></svg>'
 
 
 def orbit_card(index, item):
-    kind, title, short, description, tags, icon = item
-    front = " is-front" if index == 0 else ""
+    kind, title, short, d_title, d_accent, description, tags, icon, dark = item
+    classes = "orb" + (" orb--dark" if dark else "") + (" is-on" if index == 0 else "")
     return (
-        f'<li class="orbit-card{front}" data-kind="{kind}" data-tags="{"|".join(tags)}">'
-        f'<span class="orbit-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">{ORBIT_ICONS[icon]}</svg></span>'
-        f'<span class="orbit-card__text"><strong>{title}</strong><span>{short}</span>'
-        f'<span class="orbit-card__desc">{description}</span></span></li>'
+        f'<li class="{classes}" data-kind="{kind}" data-title="{d_title}" data-accent="{d_accent}" '
+        f'data-text="{description}" data-tags="{"|".join(tags)}">'
+        f'<span class="orb__chip" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">{ORBIT_ICONS[icon]}</svg></span>'
+        f'<span class="orb__text"><b>{title}</b><small>{short}</small></span></li>'
     )
 
 
 def orbit_detail(item, total):
-    kind, title, _short, description, tags, _icon = item
-    tag_list = "".join(f"<li>{tag}</li>" for tag in tags)
+    kind, _t, _s, d_title, d_accent, description, tags, _i, _d = item
+    tag_list = "".join(f"<span>{tag}</span>" for tag in tags)
     return (
-        '<div class="orbit-detail" aria-hidden="true"><div class="orbit-detail__body">'
-        f'<div class="orbit-detail__index"><b data-detail="num">01</b> / {total:02d} — <span data-detail="kind">{kind}</span></div>'
-        f'<div class="orbit-detail__title" data-detail="title">{title}</div>'
-        f'<p data-detail="desc">{description}</p>'
-        f'<ul class="orbit-detail__tags" data-detail="tags">{tag_list}</ul>'
+        '<div class="orbit-detail" id="orbit-detail" aria-hidden="true">'
+        f'<div class="orbit-detail__count"><b data-detail="num">01</b><span>/ {total:02d}</span><span>— <span data-detail="kind">{kind}</span></span></div>'
+        '<div class="orbit-detail__body" data-detail="body">'
+        f'<h2 class="orbit-detail__title" data-detail="title">{d_title} <em>{d_accent}</em></h2>'
+        f'<p data-detail="text">{description}</p>'
+        f'<div class="orbit-detail__tags" data-detail="tags">{tag_list}</div>'
         '</div></div>'
     )
 
 
 orbit_cards = "".join(orbit_card(i, item) for i, item in enumerate(ORBIT_ITEMS))
 orbit_ticks = "<i></i>" * len(ORBIT_ITEMS)
-orbit_hero = f'''<section class="orbit-hero" id="orbit" aria-labelledby="hero-title"><div class="orbit-pin">
-<div class="orbit-copy"><div class="eyebrow">Engineering what's next</div><h1 id="hero-title">We build tech.<br><em>You build business.</em></h1></div>
-<div class="orbit-aside"><p class="orbit-lede">Great ideas deserve great engineering. We build intelligent software and digital products to make them real.</p><div class="hero-actions"><a class="button button--acid" href="contact.html">Start a project <span aria-hidden="true">↗</span></a><a class="button button--text" href="projects.html">Our work <span aria-hidden="true">→</span></a></div></div>
-<div class="orbit-stage"><div class="orbit-watermark" aria-hidden="true">BRUZ<span>®</span></div><div class="orbit-ring" aria-hidden="true"></div><div class="orbit-core" aria-hidden="true"><div class="orbit-core__halo"></div><div class="orbit-core__spin"></div><div class="orbit-core__mark">{BRUZ_MARK}</div></div><ol class="orbit-cards" aria-label="What Bruz builds">{orbit_cards}</ol></div>
+# Structure mirrors the scroll-story pattern: a tall section with a sticky stage.
+# Layer order (back → front): big word, back half of the ring, intro copy, glow, Bruz mark,
+# cards (behind/in front of the mark by depth), front half of the ring, halo, detail, finale.
+orbit_hero = f'''<section class="orbit-hero" id="orbit" aria-labelledby="hero-title"><div class="orbit-stage" data-orbit-stage>
+<div class="orbit-bigword" aria-hidden="true">BRUZ</div>
+<svg class="orbit-line orbit-line--back" aria-hidden="true"><path data-orbit-path="back"/></svg>
+<div class="orbit-intro"><div class="eyebrow">Engineering what's next</div><h1 id="hero-title">We build tech.<br><em>You build business.</em></h1></div>
+<div class="orbit-side"><p class="orbit-lede">Great ideas deserve great engineering. We build intelligent software and digital products to make them real.</p><div class="hero-actions"><a class="button button--acid" href="contact.html">Start a project <span aria-hidden="true">↗</span></a><a class="button button--outline" href="projects.html">Our work <span aria-hidden="true">→</span></a></div></div>
+<div class="orbit-glow" aria-hidden="true"></div>
+<div class="orbit-mark" role="img" aria-label="Bruz Digital mark"><div class="orbit-mark__tile">{BRUZ_MARK}</div></div>
+<ol class="orbit-orbs" aria-label="What Bruz builds">{orbit_cards}</ol>
+<svg class="orbit-line orbit-line--front" aria-hidden="true"><path data-orbit-path="front"/></svg>
+<div class="orbit-halo" aria-hidden="true"></div>
 {orbit_detail(ORBIT_ITEMS[0], len(ORBIT_ITEMS))}
-<div class="orbit-progress" aria-hidden="true"><span>Orbit</span>{orbit_ticks}</div>
-<div class="orbit-foot"><span>Studio thinking. Product discipline.</span><span>Scroll to orbit ↓</span></div>
+<div class="orbit-ticks" aria-hidden="true"><span>Orbit</span>{orbit_ticks}</div>
+<div class="orbit-finale"><div class="eyebrow">The Bruz way</div><h2>One team.<br>Two ways <em>to build.</em></h2><p>Custom work for your business. Focused products built by Bruz.</p><a class="button button--acid" href="contact.html">Start a conversation <span aria-hidden="true">↗</span></a></div>
+<div class="orbit-foot-l"><span class="orbit-star" aria-hidden="true">★</span><span>2nd runner-up · Johor Plantations Hackathon 2026</span></div>
+<div class="orbit-foot-r" aria-hidden="true"><span data-orbit-label>Scroll to orbit</span><svg class="orbit-dial" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" class="orbit-dial__track"/><circle cx="22" cy="22" r="20" class="orbit-dial__arc" data-orbit-dial transform="rotate(-90 22 22)"/><path d="M22 16v12M17.5 23.5L22 28l4.5-4.5"/></svg></div>
 </div></section>'''
 
-HOME_SCRIPTS = (
-    "assets/vendor/gsap/gsap-3.15.1.min.js",
-    "assets/vendor/gsap/ScrollTrigger-3.15.1.min.js",
-)
+HOME_SCRIPTS = ()
 
 home = f'''{orbit_hero}
 <a class="achievement" href="projects.html#quality-control-tower"><span class="eyebrow">Recent recognition</span><strong>2nd runner-up · Johor Plantations Hackathon 2026</strong><span>See the build ↗</span></a>
