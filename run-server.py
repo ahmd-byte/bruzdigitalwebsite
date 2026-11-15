@@ -181,6 +181,9 @@ class RangeRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         if not self._header_sent("accept-ranges"):
             self.send_header("Accept-Ranges", "bytes")
+        # Local preview only: never let the browser reuse a stale copy of an edited file.
+        if not self._header_sent("cache-control"):
+            self.send_header("Cache-Control", "no-store")
         super().end_headers()
 
     def _header_sent(self, name):
