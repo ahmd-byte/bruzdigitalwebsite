@@ -27,137 +27,206 @@
     labObserver.observe(labVisual);
   }
 
-  /* ---- Orbit hero: cards circle the Bruz mark as the pinned hero is scrolled ---- */
+  /* ---- Orbit hero: scroll story around the Bruz mark ----
+     Scroll progress p (0..1) through the 540vh section drives every layer:
+       0.02–0.14 intro copy leaves, ring opens   0.12–0.84 six cards turn past the front
+       0.84–0.97 ring closes into a halo          0.88–0.98 finale copy arrives            */
   const orbit = document.querySelector('.orbit-hero');
-  if (orbit && window.gsap && window.ScrollTrigger) initOrbit(orbit);
+  if (orbit) initOrbit(orbit);
 
   function initOrbit(section) {
-    const { gsap, ScrollTrigger } = window;
-    gsap.registerPlugin(ScrollTrigger);
+    const stage = section.querySelector('[data-orbit-stage]');
+    const q = sel => section.querySelector(sel);
+    const intro = q('.orbit-intro'), side = q('.orbit-side'), mark = q('.orbit-mark');
+    const glow = q('.orbit-glow'), halo = q('.orbit-halo'), bigword = q('.orbit-bigword');
+    const detail = q('.orbit-detail'), ticksEl = q('.orbit-ticks'), finale = q('.orbit-finale');
+    const pathBack = q('[data-orbit-path="back"]'), pathFront = q('[data-orbit-path="front"]');
+    const lines = [...section.querySelectorAll('.orbit-line')];
+    const dial = q('[data-orbit-dial]'), label = q('[data-orbit-label]');
+    const field = name => q(`[data-detail="${name}"]`);
+    const orbs = [...section.querySelectorAll('.orb')].map(el => ({ el, w: 0, h: 0 }));
+    const ticks = [...section.querySelectorAll('.orbit-ticks i')];
+    const N = orbs.length;
+    if (!stage || !mark || N < 2) return;
 
-    const pin = section.querySelector('.orbit-pin');
-    const ring = section.querySelector('.orbit-ring');
-    const core = section.querySelector('.orbit-core');
-    const coreMark = section.querySelector('.orbit-core__mark');
-    const coreSpin = section.querySelector('.orbit-core__spin');
-    const watermark = section.querySelector('.orbit-watermark');
-    const cardList = section.querySelector('.orbit-cards');
-    const cards = gsap.utils.toArray('.orbit-card', section);
-    const ticks = gsap.utils.toArray('.orbit-progress i', section);
-    const progress = section.querySelector('.orbit-progress');
-    const detail = section.querySelector('.orbit-detail');
-    const detailBody = section.querySelector('.orbit-detail__body');
-    const field = name => section.querySelector(`[data-detail="${name}"]`);
-    const fields = { num: field('num'), kind: field('kind'), title: field('title'), desc: field('desc'), tags: field('tags') };
-    const count = cards.length;
-    const step = (Math.PI * 2) / count;
-    if (!pin || !ring || !detail || count < 2) return;
-
-    const fillDetail = index => {
-      const card = cards[index];
-      fields.num.textContent = String(index + 1).padStart(2, '0');
-      fields.kind.textContent = card.dataset.kind;
-      fields.title.textContent = card.querySelector('strong').textContent;
-      fields.desc.textContent = card.querySelector('.orbit-card__desc').textContent;
-      fields.tags.replaceChildren(...card.dataset.tags.split('|').map(tag => {
-        const item = document.createElement('li');
-        item.textContent = tag;
-        return item;
-      }));
+    const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+    const smooth = t => t * t * (3 - 2 * t);
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const seg = (p, a, b) => clamp((p - a) / (b - a));
+    // Rotation that eases into each card and lingers while it faces front.
+    const stepped = t => {
+      const s = t * (N - 1), f = s - Math.floor(s);
+      return (Math.floor(s) + f - Math.sin(2 * Math.PI * f) / (2 * Math.PI)) / (N - 1);
     };
 
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
-      section.classList.add('is-live');
-      const state = { turn: 0 };
-      let radiusX = 0;
-      let radiusY = 0;
-      let active = 0;
+    section.classList.add('is-live');
 
-      const measure = () => {
-        radiusX = ring.offsetWidth / 2;
-        radiusY = ring.offsetHeight / 2;
-      };
+    let W = 0, H = 0, S = 0, baseY = 0, raisedY = 0, mobile = false;
+    let target = 0, prog = 0, mx = 0, my = 0, tmx = 0, tmy = 0;
+    let active = -1, running = false, visible = true, swapTimer = 0;
 
-      const setActive = (index, animate) => {
-        active = index;
-        cards.forEach((card, i) => card.classList.toggle('is-front', i === index));
-        ticks.forEach((tick, i) => tick.classList.toggle('is-active', i === index));
-        fillDetail(index);
-        if (!animate) return;
-        gsap.fromTo(detailBody, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out', overwrite: true });
-        gsap.fromTo(coreMark, { scale: 0.93 }, { scale: 1, duration: 0.6, ease: 'back.out(2.2)', overwrite: true });
-      };
+    const measure = () => {
+      W = stage.clientWidth;
+      H = stage.clientHeight;
+      mobile = W <= 900;
+      if (mobile) {
+        side.style.top = `${intro.offsetTop + intro.offsetHeight + 18}px`;
+        const sideBottom = side.offsetTop + side.offsetHeight;
+        S = Math.max(140, Math.min(W * 0.56, H * 0.34));
+        baseY = Math.max(H * 0.68, sideBottom + S / 2 + 20);
+        raisedY = baseY;
+      } else {
+        side.style.top = '';
+        S = Math.min(H * 0.4, W * 0.27);
+        // Starts low under the headline, rises as the intro copy leaves so the ring clears the detail panel.
+        baseY = H * 0.56;
+        raisedY = H * 0.46;
+      }
+      mark.style.setProperty('--mark', `${S.toFixed(1)}px`);
+      lines.forEach(svg => svg.setAttribute('viewBox', `0 0 ${W} ${H}`));
+      orbs.forEach(o => { o.w = o.el.offsetWidth; o.h = o.el.offsetHeight; });
+    };
 
-      // Angle π/2 is the bottom of the ellipse: the point nearest the viewer.
-      const render = () => {
-        cards.forEach((card, i) => {
-          const angle = Math.PI / 2 + (i - state.turn) * step;
-          const depth = (Math.sin(angle) + 1) / 2;
-          gsap.set(card, {
-            x: Math.cos(angle) * radiusX,
-            y: Math.sin(angle) * radiusY,
-            xPercent: -50,
-            yPercent: -50,
-            scale: 0.66 + 0.44 * depth,
-            opacity: 0.32 + 0.68 * depth,
-            filter: `blur(${((1 - depth) * 1.6).toFixed(2)}px)`,
-            zIndex: Math.round(depth * 100),
-          });
-        });
-        const front = Math.min(count - 1, Math.max(0, Math.round(state.turn)));
-        if (front !== active) setActive(front, true);
-      };
+    const readScroll = () => {
+      const span = Math.max(1, section.offsetHeight - H);
+      target = clamp(-section.getBoundingClientRect().top / span);
+    };
 
-      measure();
-      setActive(0, false);
-      render();
+    const fillDetail = index => {
+      const card = orbs[index].el.dataset;
+      field('num').textContent = String(index + 1).padStart(2, '0');
+      field('kind').textContent = card.kind;
+      const accent = document.createElement('em');
+      accent.textContent = card.accent;
+      field('title').replaceChildren(`${card.title} `, accent);
+      field('text').textContent = card.text;
+      field('tags').replaceChildren(...card.tags.split('|').map(tag => {
+        const chip = document.createElement('span');
+        chip.textContent = tag;
+        return chip;
+      }));
+      field('body').classList.remove('is-out');
+    };
 
-      // Timeline: 0 → INTRO swaps the headline for the detail panel, INTRO → 1 turns the orbit.
-      const INTRO = 0.14;
-      const snaps = [0, ...cards.map((_, i) => INTRO + (i * (1 - INTRO)) / (count - 1))];
-      gsap.set([ring, core, watermark], { xPercent: -50, yPercent: -50, x: 0, y: 0 });
-      gsap.set(watermark, { yPercent: -30 });
+    const setActive = index => {
+      if (index === active) return;
+      const first = active === -1;
+      active = index;
+      orbs.forEach((o, i) => o.el.classList.toggle('is-on', i === index));
+      ticks.forEach((t, i) => t.classList.toggle('is-on', i === index));
+      if (first) { fillDetail(index); return; }
+      field('body').classList.add('is-out');
+      clearTimeout(swapTimer);
+      swapTimer = setTimeout(() => fillDetail(active), 260);
+    };
 
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: section,
-          pin,
-          start: 'top top',
-          end: () => `+=${Math.round(window.innerHeight * 5.4)}`,
-          scrub: 0.7,
-          invalidateOnRefresh: true,
-          onRefresh: () => { measure(); render(); },
-          // inertia: false snaps to the nearest card; velocity-based snapping skipped cards on quick flicks.
-          snap: { snapTo: snaps, inertia: false, duration: { min: 0.2, max: 0.6 }, delay: 0.1, ease: 'power1.inOut' },
-        },
+    const fade = (el, k, dy) => {
+      el.style.opacity = k.toFixed(3);
+      el.style.transform = `translateY(${dy.toFixed(1)}px)`;
+      el.style.pointerEvents = k > 0.5 ? 'auto' : 'none';
+    };
+
+    const render = now => {
+      prog += (target - prog) * (reduceMotion ? 1 : 0.09);
+      if (Math.abs(target - prog) < 1e-5) prog = target;
+      mx += (tmx - mx) * 0.06;
+      my += (tmy - my) * 0.06;
+      const p = prog;
+      const kIn = smooth(seg(p, 0.02, 0.14));
+      const kOrbit = seg(p, 0.12, 0.84);
+      const kOut = smooth(seg(p, 0.84, 0.97));
+      const kDet = smooth(seg(p, 0.1, 0.17)) * (1 - smooth(seg(p, 0.8, 0.86)));
+      const kFin = smooth(seg(p, 0.88, 0.98));
+      const still = mobile || reduceMotion;
+      const px = still ? 0 : mx * 10, py = still ? 0 : my * 6;
+
+      // The Bruz mark plays the role of the figure the ring circles.
+      const lift = mobile ? H * 0.26 * smooth(seg(p, 0.08, 0.16)) * (1 - smooth(seg(p, 0.84, 0.95))) : 0;
+      const markScale = 1 + kIn * 0.02 - kOut * (mobile ? 0.04 : 0.1);
+      const mcx = W / 2 + px, mcy = lerp(baseY, raisedY, kIn) - lift + Math.max(0, py);
+      mark.style.transform = `translate(${(mcx - S / 2).toFixed(1)}px, ${(mcy - S / 2).toFixed(1)}px) scale(${markScale.toFixed(4)})`;
+
+      const cx = mcx + px * 0.4;
+      const cy = mcy + S * (mobile ? 0.12 : 0.06) * markScale;
+      const sway = reduceMotion ? 0 : Math.sin(now / 2600) * 0.07 * (1 - kIn);
+      const rot = -stepped(kOrbit) * (N - 1) * 2 * Math.PI / N + sway + (still ? 0 : mx * 0.12);
+      let Rx = mobile ? Math.min(S * lerp(0.72, 0.82, kIn), W / 2 - 64) : Math.min(S * lerp(1.05, 1.4, kIn), W * 0.36);
+      let Ry = Rx * (lerp(0.24, 0.3, kIn) + (still ? 0 : my * 0.03));
+      let ccx = cx, ccy = cy + Ry * lerp(0.8, 0.25, kIn);
+      // Outro: the ring closes into a halo resting above the mark.
+      const hx = mcx, hy = mcy - (S * markScale) / 2 - S * 0.06;
+      const hRx = S * 0.42, hRy = hRx * 0.2;
+      Rx = lerp(Rx, hRx, kOut); Ry = lerp(Ry, hRy, kOut);
+      ccx = lerp(ccx, hx, kOut); ccy = lerp(ccy, hy, kOut);
+
+      let best = -2, bestIndex = 0;
+      orbs.forEach((o, i) => {
+        const th = rot + (i * 2 * Math.PI) / N;
+        const sx = Math.sin(th), cz = Math.cos(th);
+        const d = (cz + 1) / 2;
+        const x = ccx + Rx * sx, y = ccy + Ry * cz;
+        const sc = (0.58 + 0.5 * d) * (1 - kOut * 0.9) * (mobile ? 0.92 : 1);
+        o.el.style.transform = `translate3d(${(x - o.w / 2).toFixed(1)}px, ${(y - o.h / 2).toFixed(1)}px, 0) rotateY(${(-sx * 42).toFixed(1)}deg) scale(${sc.toFixed(3)})`;
+        o.el.style.opacity = ((0.5 + 0.5 * d) * (1 - kOut)).toFixed(3);
+        // Front half of the orbit passes in front of the mark (z 20), back half behind it.
+        o.el.style.zIndex = cz > 0 ? 30 + Math.round(d * 9) : 4 + Math.round(d * 9);
+        if (cz > best) { best = cz; bestIndex = i; }
       });
-      tl.to(section.querySelectorAll('.orbit-copy, .orbit-aside'), { autoAlpha: 0, y: -48, duration: INTRO }, 0)
-        .fromTo(detail, { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: INTRO * 0.75 }, INTRO * 0.35)
-        .fromTo(progress, { autoAlpha: 0 }, { autoAlpha: 1, duration: INTRO * 0.75 }, INTRO * 0.35)
-        .to(state, { turn: count - 1, duration: 1 - INTRO, onUpdate: render }, INTRO)
-        .to(coreSpin, { rotation: 300, duration: 1 }, 0)
-        .to(watermark, { x: () => -window.innerWidth * 0.08, duration: 1 }, 0);
+      if (p > 0.08 && p < 0.86) setActive(bestIndex);
+      else if (active === -1) setActive(0);
 
-      // One-off entrance on page load; targets differ from the scrubbed ones so they never fight.
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .from(section.querySelectorAll('.orbit-copy > *, .orbit-aside > *'), { y: 28, autoAlpha: 0, duration: 0.8, stagger: 0.08 })
-        .from(core, { scale: 0.7, autoAlpha: 0, duration: 1 }, 0.1)
-        .from(ring, { scale: 0.6, autoAlpha: 0, duration: 1.1 }, 0.15)
-        .from(cardList, { scale: 0.55, autoAlpha: 0, duration: 1.1 }, 0.25)
-        .from(section.querySelector('.orbit-foot'), { autoAlpha: 0, duration: 0.6 }, 0.6);
+      pathBack.setAttribute('d', `M ${ccx - Rx} ${ccy} A ${Rx} ${Ry} 0 0 1 ${ccx + Rx} ${ccy}`);
+      pathFront.setAttribute('d', `M ${ccx - Rx} ${ccy} A ${Rx} ${Ry} 0 0 0 ${ccx + Rx} ${ccy}`);
+      const lineAlpha = (1 - kOut) * (0.4 + 0.6 * (1 - kIn * 0.3));
+      lines.forEach(svg => { svg.style.opacity = lineAlpha.toFixed(3); });
 
-      return () => {
-        // Per-frame gsap.set calls run in callbacks, outside this context, so clear them by hand.
-        gsap.set(cards, { clearProps: 'transform,opacity,filter,zIndex,visibility' });
-        section.classList.remove('is-live');
-        setActive(0, false);
-      };
-    });
+      halo.style.width = `${hRx * 2}px`;
+      halo.style.height = `${hRy * 2}px`;
+      halo.style.transform = `translate(${hx - hRx}px, ${hy - hRy - (1 - kOut) * 30}px) rotate(${-6 + (reduceMotion ? 0 : Math.sin(now / 1800) * 2)}deg)`;
+      halo.style.opacity = kOut.toFixed(3);
+      glow.style.left = `${cx}px`;
+      glow.style.top = `${mcy - S * 0.1}px`;
+      glow.style.opacity = (kOut * 0.85).toFixed(3);
 
-    // Fonts change card widths and headline height; re-measure once they settle.
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+      fade(intro, 1 - kIn, -kIn * 50);
+      fade(side, 1 - kIn, -kIn * 40);
+      fade(detail, kDet, (1 - kDet) * 24);
+      ticksEl.style.opacity = kDet.toFixed(3);
+      fade(finale, kFin, (1 - kFin) * 40);
+
+      bigword.style.transform = `translateX(calc(-50% + ${((0.5 - p) * W * 0.16 - px * 0.6).toFixed(1)}px))`;
+      bigword.style.opacity = (1 - kOut * 0.6).toFixed(3);
+      dial.style.strokeDashoffset = (125.66 * (1 - p)).toFixed(2);
+      label.textContent = p > 0.97 ? 'Keep scrolling' : 'Scroll to orbit';
+    };
+
+    const frame = now => {
+      if (!running) return;
+      render(now);
+      requestAnimationFrame(frame);
+    };
+    const start = () => {
+      if (running || !visible || document.hidden) return;
+      running = true;
+      requestAnimationFrame(frame);
+    };
+
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) start(); else running = false;
+    }).observe(section);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) running = false; else start(); });
+    window.addEventListener('scroll', () => { readScroll(); start(); }, { passive: true });
+    window.addEventListener('pointermove', event => {
+      tmx = event.clientX / window.innerWidth - 0.5;
+      tmy = event.clientY / window.innerHeight - 0.5;
+    }, { passive: true });
+    window.addEventListener('resize', () => { measure(); readScroll(); render(performance.now()); });
+
+    const boot = () => { measure(); readScroll(); prog = target; render(performance.now()); start(); };
+    boot();
+    // Web fonts change card and headline sizes; measure again once they are in.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(boot);
   }
 
   const toggle = document.querySelector('.menu-toggle');
