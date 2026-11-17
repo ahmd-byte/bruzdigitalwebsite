@@ -3,7 +3,7 @@
 
   /* ═══ SCROLL REVEAL ═══ */
   if (!reduceMotion && 'IntersectionObserver' in window) {
-    const targets = [...document.querySelectorAll('.scene-head, .glass-panel, .case-row, .case-copy, .case-visual, .product-explorer, .person, .content-card, .detail-list li, .case-method li, .cta-scene > *, .footer-dir, .footer-mark')];
+    const targets = [...document.querySelectorAll('.scene-head, .tib-intro__head > *, .case-row, .case-copy, .case-visual, .product-explorer, .crew__head > *, .crew__card, .press__cta > *, .press-foot__dir, .person, .content-card, .detail-list li, .case-method li')];
     targets.forEach((el, i) => { el.dataset.reveal = i % 3 === 0 ? 'soft' : ''; });
     document.documentElement.classList.add('motion-ready');
     const obs = new IntersectionObserver(entries => {
@@ -31,6 +31,37 @@
   /* ═══ HERO ORBIT ═══ */
   const hero = document.querySelector('.hero');
   if (hero && window.gsap && window.ScrollTrigger) initOrbit(hero);
+  // Created after the orbit so its pin spacer exists when these triggers measure the page.
+  if (window.gsap && window.ScrollTrigger) initScenes();
+
+  /* ═══ SCROLL SCENES: tilted cards settle, photos rise, footer capsule lifts ═══ */
+  function initScenes() {
+    const { gsap } = window;
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.utils.toArray('.tib-card').forEach((card, i) => {
+        const side = i % 2 ? 1 : -1;
+        gsap.fromTo(card,
+          { y: 140, rotation: side * 5, rotationX: 22, transformPerspective: 1200, transformOrigin: '50% 100%' },
+          { y: 0, rotation: side * 0.6, rotationX: 0, ease: 'none', scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 55%', scrub: 0.8 } });
+      });
+      const glow = document.querySelector('.tib-stage__glow');
+      if (glow) gsap.fromTo(glow, { scale: 0.7, autoAlpha: 0.25 }, { scale: 1.1, autoAlpha: 1, ease: 'none', scrollTrigger: { trigger: '.tib-stage', start: 'top bottom', end: 'center center', scrub: true } });
+
+      const crew = document.querySelector('.crew__stage');
+      if (crew) {
+        gsap.fromTo('.crew__photo', { y: 120 }, { y: 0, ease: 'none', stagger: 0.08, scrollTrigger: { trigger: crew, start: 'top bottom', end: 'center center', scrub: 0.8 } });
+        gsap.fromTo('.crew__word', { xPercent: -42 }, { xPercent: -58, ease: 'none', scrollTrigger: { trigger: crew, start: 'top bottom', end: 'bottom top', scrub: true } });
+      }
+
+      const capsule = document.querySelector('.press-foot__capsule');
+      if (capsule) {
+        const foot = capsule.closest('footer');
+        gsap.fromTo(capsule, { yPercent: 45 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: foot, start: 'top bottom', end: 'bottom bottom', scrub: 0.8 } });
+        gsap.fromTo('.press-foot__glow', { scale: 0.6, autoAlpha: 0.3 }, { scale: 1, autoAlpha: 1, ease: 'none', scrollTrigger: { trigger: foot, start: 'top bottom', end: 'bottom bottom', scrub: true } });
+      }
+    });
+  }
 
   function initOrbit(section) {
     const { gsap, ScrollTrigger } = window;
@@ -153,6 +184,29 @@
     });
 
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+
+  /* ═══ LINK SCRAMBLE: letters shuffle and resolve on hover ═══ */
+  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    const glyphs = '!<>-_/[]{}=+*^?#%&$@';
+    document.querySelectorAll('[data-scramble]').forEach(el => {
+      const text = el.textContent;
+      let frame = 0;
+      // Screen readers keep the real label while the visible letters shuffle.
+      if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', text.replace(/[⟶↗↑→]/g, '').trim());
+      el.addEventListener('mouseenter', () => {
+        cancelAnimationFrame(frame);
+        const start = performance.now();
+        const tick = now => {
+          const k = Math.min(1, (now - start) / 450);
+          const shown = Math.floor(k * text.length);
+          el.textContent = [...text].map((ch, i) => (i < shown || ch === ' ' ? ch : glyphs[(Math.random() * glyphs.length) | 0])).join('');
+          if (k < 1) frame = requestAnimationFrame(tick);
+          else el.textContent = text;
+        };
+        frame = requestAnimationFrame(tick);
+      });
+    });
   }
 
   /* ═══ STICKY HEADER ═══ */
