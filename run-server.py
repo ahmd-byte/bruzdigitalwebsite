@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static file server for the FeedForge site copy.
+"""Static file server for the local Bruz Digital preview.
 
 Adds two things Python's stock SimpleHTTPRequestHandler lacks and browsers need
 for <video> playback:
@@ -24,7 +24,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 PORT = 8000
-ROOT = os.path.join(HERE, "downloaded-site")
+ROOT = HERE
 
 # Errors raised when the peer goes away mid-response. Normal for <video>.
 DISCONNECT_ERRORS = (
@@ -228,7 +228,7 @@ def main():
         "--root",
         default=ROOT,
         help="directory to serve; relative paths resolve against this script "
-             "(default: ./downloaded-site)",
+             "(default: the project folder)",
     )
     parser.add_argument("--port", type=int, default=PORT, help="listen port (default: 8000)")
     args = parser.parse_args()
